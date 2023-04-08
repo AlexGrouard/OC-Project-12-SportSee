@@ -1,0 +1,21 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.header {
+    @include flex-center;
+    background-color: $black;
+    color: white;
+    height: 90px;
+}
+.logo{
+    width: 20%;
+    img{
+        margin-left: 20px;
+    }
+}
+nav {
+    width: 80%;
+    font-size: 24px;
+    @include flex-center;
+    justify-content: space-around;
+}

@@ -1,10 +1,10 @@
 import React from "react"
-import "./App.css"
+import styles from "./style/App.module.scss"
 import Layout from "./layout/Layout"
 
-function App() {
+function App(): JSX.Element {
 	return (
-		<div className='App'>
+		<div className={styles.app}>
 			<Layout />
 		</div>
 	)
