@@ -7,38 +7,30 @@ import Score from "../../components/Score/Score"
 import Card from "../../components/Card/Card"
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
-import axios from "axios"
+import fetchData from "../../utils/getApiData"
 
-//async call to axios to get data
-async function getData(user: Object) {
-	//console.log(user)
-	try {
-		const { data } = await axios.get("http://localhost:3000/user/12")
-		return data
-	} catch (error) {
-		return (
-			<div className={styles.main}>
-				{" "}
-				Une erreur c'est produit merci de recharger la page{" "}
-			</div>
-		)
-	}
+type getProp = {
+	id: number
+	UserInfos: {}
+	todayScore: number
+	keyData: {}
 }
 
 function Home(): JSX.Element {
-	const [rawData, setrawData] = useState([])
+	const [loadedData, setloadedData] = useState({})
 	const user = useParams()
-	useEffect(() => {
-		async function getDataLoader() {
-			const datas = await getData(user)
-			setrawData(datas)
-		}
-		getDataLoader()
-	})
 
+	useEffect(() => {
+		async function loadData() {
+			const loaded = await fetchData()
+			setloadedData(loaded)
+		}
+		loadData()
+	}, [])
+	console.log(loadedData)
 	return (
 		<div className={styles.main}>
-			<Title userInfos={rawData} />
+			{/*<Title userName={data.userInfos.firstName} todayScore={data.todayScore} />*/}
 			<Today />
 			<div className={styles.graphs}>
 				<Activity />

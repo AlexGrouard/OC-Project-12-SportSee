@@ -9,10 +9,8 @@ function Title(userName: string, todayScore: number) {
 					Bonjour <span className={styles.name}>{userName}</span>
 				</h1>
 				{/*Recuperer le todayScore depuis l'API puis generer un message en fonction de son resultat du jour
-				if todayScore < 0.2 {
-					return (<div className={styles.message}> Belle performance ! On ne lache rien :flex  </div>)
-				}
-				else {return (<div className={styles.message}>Félicitation ! Vous avez explosé vos objectifs hier 👏</div>}
+					if (todayScore < 0.2) {return (<div className={styles.message}> Belle performance ! On ne lache rien :flex  </div>)}
+					else {return (<div className={styles.message}>Félicitation ! Vous avez explosé vos objectifs hier 👏</div>}
 				
 				*/}
 			</div>
