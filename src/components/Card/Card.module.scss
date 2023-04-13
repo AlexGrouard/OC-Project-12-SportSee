@@ -1,0 +1,25 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 124px;
+    width: 258px;
+    background-color: $backgroundGrey;
+    border-radius: $radius;
+    margin-bottom: 40px;
+}
+.text{
+    margin-left: 30px;
+}
+.number {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.type {
+    color:$caloriesColor;
+    font-weight: 500;
+}

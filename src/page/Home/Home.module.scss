@@ -1,10 +1,21 @@
 @import '../../style/variables';
 @import '../../style/mixins';
+.main{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
 
+}
 .title {
     font-size: 28px;
 }
 
 .name{
     color: $red;
+}
+
+.sidecard{
+    display: flex;
+    width: 30%;
+    justify-content: flex-end;
 }

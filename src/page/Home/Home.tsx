@@ -7,44 +7,44 @@ import Score from "../../components/Score/Score"
 import Card from "../../components/Card/Card"
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
-import fetchData from "../../utils/getApiData"
-
-type getProp = {
-	id: number
-	UserInfos: {}
-	todayScore: number
-	keyData: {}
-}
+import { getUserByID } from "../../utils/getApiData"
+import { UserType } from "../../type/Types"
 
 function Home(): JSX.Element {
-	const [loadedData, setloadedData] = useState({})
-	const user = useParams()
+	const [user, setUser] = useState<UserType>()
+	const { id } = useParams()
 
 	useEffect(() => {
 		async function loadData() {
-			const loaded = await fetchData()
-			setloadedData(loaded)
+			const loaded = await getUserByID(id)
+			setUser(loaded)
 		}
 		loadData()
-	}, [])
-	console.log(loadedData)
-	return (
-		<div className={styles.main}>
-			{/*<Title userName={data.userInfos.firstName} todayScore={data.todayScore} />*/}
-			<Today />
-			<div className={styles.graphs}>
-				<Activity />
-				<Average />
-				<Score />
+	}, [id])
+	if (!user) {
+		return <div>Chargement en cours</div>
+	} else {
+		return (
+			<div className={styles.main}>
+				<Title
+					userName={user.userInfos.firstName}
+					todayScore={user.todayScore}
+				/>
+				<Today />
+				<div className={styles.graphs}>
+					<Activity />
+					<Average />
+					<Score />
+				</div>
+				<div className={styles.sideCard}>
+					<Card count={user.keyData.calorieCount} type='Calories' />
+					<Card count={user.keyData.proteinCount} type='Proteines' />
+					<Card count={user.keyData.carbohydrateCount} type='Glucides' />
+					<Card count={user.keyData.lipidCount} type='Lipides' />
+				</div>
 			</div>
-			<div className={styles.sideCard}>
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-			</div>
-		</div>
-	)
+		)
+	}
 }
 
 export default Home
