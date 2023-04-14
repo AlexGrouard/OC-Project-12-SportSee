@@ -16,6 +16,50 @@ export type UserType = {
 	todayScore: number
 	keyData: KeyData
 }
+export type UserActivity = {
+	id: number
+	sessions: ActivitySession
+}
+
+export type ActivitySession = {
+	day: Date
+	kilogram: number
+	calories: number
+}
+
+export type UserAverage = {
+	id: number
+	sessions: AverageSession
+}
+
+export type AverageSession = {
+	day: number
+	sessionLength: number
+}
+
+export type UserPerformance = {
+	id: number
+	kind: PerfKind
+	data: PerfData
+}
+
+export type PerfKind = {
+	1: string
+	2: string
+	3: string
+	4: string
+	5: string
+	6: string
+}
+
+export type PerfData = {
+	value: number
+	kind: number
+}
+
+export type activityData = {
+
+}
 
 export type TitleProps = {
 	userName: string

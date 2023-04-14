@@ -1,7 +1,7 @@
 import styles from "./Title.module.scss"
 import { TitleProps } from "../../type/Types"
 
-function Title({ userName, todayScore }: TitleProps) {
+export function Title({ userName, todayScore }: TitleProps) {
 	if (todayScore < 0.2) {
 		return (
 			<div className={styles.main}>
@@ -30,5 +30,3 @@ function Title({ userName, todayScore }: TitleProps) {
 		)
 	}
 }
-
-export default Title
