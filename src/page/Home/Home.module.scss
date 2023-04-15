@@ -1,21 +1,31 @@
 @import '../../style/variables';
 @import '../../style/mixins';
+
 .main{
     display:flex;
-    flex-direction: column;
-    justify-content: space-between;
-
+}
+.section {
+    width: 100%;
 }
 .title {
     font-size: 28px;
 }
-
+.today{
+    margin-top: 77px;
+}
+.graphs{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
 .name{
     color: $red;
 }
 
-.sidecard{
+aside{
     display: flex;
-    width: 30%;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+    padding-top: 13vh;
 }

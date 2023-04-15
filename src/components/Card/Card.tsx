@@ -1,9 +1,9 @@
-import styles from "./Card.module.scss"
-import { CardProps } from "../../type/Types"
 import caloriesIcon from "../../assets/calories-icon.svg"
 import carbsIcon from "../../assets/carbs-icon.svg"
 import fatIcon from "../../assets/fat-icon.svg"
 import proteinIcon from "../../assets/protein-icon.svg"
+import { CardProps } from "../../type/Types"
+import styles from "./Card.module.scss"
 
 function Card({ count, type }: CardProps): JSX.Element {
 	let typeVariant
@@ -12,7 +12,7 @@ function Card({ count, type }: CardProps): JSX.Element {
 
 	if (type === "Calories") {
 		icon = <img className={styles.icon} src={caloriesIcon} alt={type}></img>
-		typeVariant = <div className={styles.number}>{formattedCount}Kcal</div>
+		typeVariant = <div className={styles.number}>{formattedCount}kCal</div>
 	} else {
 		typeVariant = <div className={styles.number}>{formattedCount}g</div>
 	}

@@ -1,0 +1,9 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+.main {
+    width: 258px;
+    height: 263px;
+    background-color: $red;
+    border-radius: $radius;
+    color: white;
+}

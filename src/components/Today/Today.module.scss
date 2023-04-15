@@ -1,0 +1,14 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+.main {
+    height: 350px;
+    width: 100%;
+    background-color: $backgroundGrey;
+    border-radius: $radius;
+    .title{
+        position: relative;
+        top: 25px;
+        left: 32px;
+        font-weight: bold;
+    }
+}
