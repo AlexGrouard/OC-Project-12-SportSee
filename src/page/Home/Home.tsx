@@ -49,8 +49,7 @@ function Home(): JSX.Element {
 			return <div>Chargement en cours</div>
 			//const title = <Today formattedData={activityFormatter(activity)} />
 		} else {
-			const test = activityFormatter(activity)
-			console.log(test)
+			console.log(activityFormatter(activity))
 		}
 
 		return (

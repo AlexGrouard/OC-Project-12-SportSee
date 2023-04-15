@@ -57,8 +57,10 @@ export type PerfData = {
 	kind: number
 }
 
-export type activityData = {
-
+export type FormattedActivityData = {
+	day: number,
+	kilograms: number
+	calories: number
 }
 
 export type TitleProps = {
