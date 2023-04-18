@@ -18,13 +18,11 @@ export type UserType = {
 }
 export type UserActivity = {
 	id: number
-	sessions: ActivitySession
-}
-
-export type ActivitySession = {
-	day: Date
-	kilogram: number
-	calories: number
+	sessions: {
+		day: string
+		kilogram: number
+		calories: number
+	}
 }
 
 export type UserAverage = {
@@ -58,7 +56,7 @@ export type PerfData = {
 }
 
 export type FormattedActivityData = {
-	day: number,
+	day: number
 	kilograms: number
 	calories: number
 }
@@ -71,4 +69,9 @@ export type TitleProps = {
 export type CardProps = {
 	count: number
 	type: string
+}
+
+export type ScoreProps = {
+	//scoreChartData: TodayScoreFormatted
+	todayScore: number
 }

@@ -5,14 +5,14 @@
     background-color: $black;
     position: absolute;
     left: 0;
-    top: 0;
+    //top: 0;
     width: 117px;
-    height: 100%;
     color: white;
-    z-index: -1;
+    //z-index: -1;
+    padding-bottom: 50px;
 }
 .logos {
-    margin-top: 35vh;
+    margin-top: 256px;
     @include flex-center;
     justify-content: center;
     img{
@@ -22,5 +22,5 @@
 .copyright{
     transform: rotate(270deg);
     font-size: 12px;
-    margin-top: 28vh;
+    margin-top: 150px;
 }

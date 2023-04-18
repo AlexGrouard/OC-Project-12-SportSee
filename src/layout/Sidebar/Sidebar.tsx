@@ -1,8 +1,8 @@
-import styles from "./Sidebar.module.scss"
 import Activity1 from "../../assets/activity1.svg"
 import Activity2 from "../../assets/activity2.svg"
 import Activity3 from "../../assets/activity3.svg"
 import Activity4 from "../../assets/activity4.svg"
+import styles from "./Sidebar.module.scss"
 
 function Header(): JSX.Element {
 	return (
@@ -13,7 +13,7 @@ function Header(): JSX.Element {
 				<img src={Activity3} alt='bike'></img>
 				<img src={Activity4} alt='workout'></img>
 			</div>
-			<div className={styles.copyright}>Copyright, SportSee 2020</div>
+			<p className={styles.copyright}>Copyright, SportSee 2020</p>
 		</div>
 	)
 }

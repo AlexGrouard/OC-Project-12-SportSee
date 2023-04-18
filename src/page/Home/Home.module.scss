@@ -3,6 +3,7 @@
 
 .main{
     display:flex;
+    flex-wrap: nowrap;
 }
 .section {
     width: 100%;
@@ -22,7 +23,7 @@
     color: $red;
 }
 
-aside{
+.sideCard{
     display: flex;
     flex-direction: column;
     justify-content: space-between;

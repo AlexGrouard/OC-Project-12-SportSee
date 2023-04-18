@@ -44,13 +44,14 @@ function Average(): JSX.Element {
 		<div className={styles.main}>
 			<ResponsiveContainer width='100%' height='100%'>
 				<LineChart data={sessions}>
-					<XAxis dataKey='day' stroke='#FFFFFF' />
+					<XAxis dataKey='day' stroke='#FFFFFF' opacity={0.5} />
 					<Tooltip />
 					<Legend />
 					<Line
 						type='natural'
 						stroke='#FFFFFF'
 						dataKey='sessionLength'
+						opacity={0.5}
 						dot={false}
 					/>
 				</LineChart>

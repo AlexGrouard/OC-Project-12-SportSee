@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import Activity from "../../components/ActivityType/Activity"
 import Average from "../../components/AvgGraph/Average"
 import Card from "../../components/Card/Card"
+import Performance from "../../components/Performance/Performance"
 import Score from "../../components/Score/Score"
-import { Title } from "../../components/Title/Title"
+import Title from "../../components/Title/Title"
 import Today from "../../components/Today/Today"
-//import { activityFormatter } from "../../formatter/formatter"
+import { todayFormatter } from "../../formatter/formatter"
 import { UserActivity, UserType } from "../../type/Types"
 import {
-	getActivity,
+	getTodayActivity,
 	// getAverage,
 	// getPerformance,
 	getUserByID,
@@ -18,7 +18,7 @@ import styles from "./Home.module.scss"
 
 function Home(): JSX.Element {
 	const [user, setUser] = useState<UserType>()
-	const [activity, setActivity] = useState<UserActivity>()
+	const [todayActivity, setTodayActivity] = useState<UserActivity>()
 	// const [average, setAverage] = useState<UserAverage>()
 	// const [performance, setPerformance] = useState<UserPerformance>()
 	const { id } = useParams()
@@ -26,31 +26,22 @@ function Home(): JSX.Element {
 	useEffect(() => {
 		async function loadData() {
 			const userLoaded = await getUserByID(id)
-			const activity = await getActivity(id)
+			const todayActivity = await getTodayActivity(id)
 			// const average = await getAverage(id)
 			// const performance = await getPerformance(id)
 			setUser(userLoaded)
-			setActivity(activity)
+			setTodayActivity(todayActivity)
 			//setAverage(average)
 			//setPerformance(performance)
 		}
 		loadData()
 	}, [id])
 
-	if (!user) {
+	if (!user || !todayActivity) {
 		return <div>Chargement en cours</div>
 	} else {
-		if (!activity) {
-			return <div>Chargement en cours</div>
-		} else {
-			//const todayGraph = <Today formattedData={activityFormatter(activity)} />
-			//)
-			Object.entries(activity.sessions).map(
-				(session) => console.log(session)
-				//console.log(activityFormatter(session))
-			)
-			//console.log(activity)
-		}
+		console.log(todayActivity.sessions)
+		const sessionsFormatted = todayFormatter(todayActivity.sessions)
 
 		return (
 			<div className={styles.main}>
@@ -60,12 +51,12 @@ function Home(): JSX.Element {
 						todayScore={user.todayScore}
 					/>
 					<div className={styles.today}>
-						<Today />
+						{/* <Today sessions={sessionsFormatted}/> */}
 					</div>
 					<div className={styles.graphs}>
 						<Average />
-						<Activity />
-						<Score />
+						<Performance />
+						<Score todayScore={user.todayScore} />
 					</div>
 				</section>
 				<aside className={styles.sideCard}>

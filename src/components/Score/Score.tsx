@@ -4,16 +4,22 @@ import {
 	RadialBarChart,
 	ResponsiveContainer,
 } from "recharts"
+import { ScoreProps } from "../../type/Types"
 import styles from "./Score.module.scss"
 
-const data = [
-	{
-		todayScore: 0.3,
-		max: 10,
-	},
-]
-
-function Score(): JSX.Element {
+function Score({ todayScore }: ScoreProps): JSX.Element {
+	const scoreInPercent = todayScore * 100
+	const data = [
+		{
+			todayScore: scoreInPercent,
+		},
+	]
+	const insideText = (
+		<div className={styles.insideText}>
+			<h3>{scoreInPercent}%</h3>
+			<div>de votre objectif</div>
+		</div>
+	)
 	return (
 		<div className={styles.main}>
 			<ResponsiveContainer width='100%' height='100%'>
@@ -23,15 +29,17 @@ function Score(): JSX.Element {
 					startAngle={90}
 					data={data}
 				>
-					<RadialBar dataKey='todayScore' fill='#FF0101' radius={10}/>
+					<RadialBar dataKey='todayScore' fill='#FF0101' radius={10} />
 					<Legend
 						iconSize={0}
 						layout='vertical'
 						verticalAlign='top'
 						align='left'
+						fill='#20253A'
 					/>
 				</RadialBarChart>
 			</ResponsiveContainer>
+			{insideText}
 		</div>
 	)
 }

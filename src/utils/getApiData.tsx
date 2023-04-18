@@ -19,7 +19,7 @@ export async function getUserByID(id: any): Promise<UserType> {
 	}
 }
 
-export async function getActivity(id: any): Promise<UserActivity> {
+export async function getTodayActivity(id: any): Promise<UserActivity> {
 	try {
 		const {
 			data: { data },

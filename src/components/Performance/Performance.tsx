@@ -5,7 +5,7 @@ import {
 	RadarChart,
 	ResponsiveContainer,
 } from "recharts"
-import styles from "./Activity.module.scss"
+import styles from "./Performance.module.scss"
 
 const data = [
 	{
@@ -34,24 +34,18 @@ const data = [
 	},
 ]
 
-function Activity(): JSX.Element {
+function Performance(): JSX.Element {
 	return (
 		<div className={styles.main}>
 			<ResponsiveContainer width='100%' height='100%'>
-				<RadarChart cx='50%' cy='50%' outerRadius='80%' data={data}>
-					<PolarGrid />
+				<RadarChart data={data}>
+					<PolarGrid gridType='polygon' radialLines={false} />
 					<PolarAngleAxis />
-					<Radar
-						name='Mike'
-						dataKey='kind'
-						stroke='#FFFFFF'
-						fill='#FF0101'
-						fillOpacity={0.6}
-					/>
+					<Radar dataKey='kind' fill='#FF0101' fillOpacity={0.6} />
 				</RadarChart>
 			</ResponsiveContainer>
 		</div>
 	)
 }
 
-export default Activity
+export default Performance
