@@ -16,13 +16,22 @@ export type UserType = {
 	todayScore: number
 	keyData: KeyData
 }
+
+export type UserSessions = {
+	day: string
+	kilograms: number
+	calories: number
+}
+
 export type UserActivity = {
 	id: number
-	sessions: {
-		day: string
-		kilogram: number
-		calories: number
-	}
+	sessions: [
+		{
+			day: string
+			kilogram: number
+			calories: number
+		}
+	]
 }
 
 export type UserAverage = {
@@ -56,9 +65,7 @@ export type PerfData = {
 }
 
 export type FormattedActivityData = {
-	day: number
-	kilograms: number
-	calories: number
+	data: UserSessions[]
 }
 
 export type TitleProps = {

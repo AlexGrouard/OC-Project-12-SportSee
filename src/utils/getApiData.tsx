@@ -8,7 +8,7 @@ import {
 
 const url = "http://localhost:3000/"
 
-export async function getUserByID(id: any): Promise<UserType> {
+export async function getUserByID(id: string | undefined): Promise<UserType> {
 	try {
 		const {
 			data: { data },
@@ -19,7 +19,9 @@ export async function getUserByID(id: any): Promise<UserType> {
 	}
 }
 
-export async function getTodayActivity(id: any): Promise<UserActivity> {
+export async function getTodayActivity(
+	id: string | undefined
+): Promise<UserActivity> {
 	try {
 		const {
 			data: { data },
@@ -30,7 +32,7 @@ export async function getTodayActivity(id: any): Promise<UserActivity> {
 	}
 }
 
-export async function getAverage(id: any): Promise<UserAverage> {
+export async function getAverage(id: string | undefined): Promise<UserAverage> {
 	try {
 		const {
 			data: { data },
@@ -41,7 +43,9 @@ export async function getAverage(id: any): Promise<UserAverage> {
 	}
 }
 
-export async function getPerformance(id: any): Promise<UserPerformance> {
+export async function getPerformance(
+	id: string | undefined
+): Promise<UserPerformance> {
 	try {
 		const {
 			data: { data },

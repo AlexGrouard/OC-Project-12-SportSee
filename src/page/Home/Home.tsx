@@ -40,9 +40,9 @@ function Home(): JSX.Element {
 	if (!user || !todayActivity) {
 		return <div>Chargement en cours</div>
 	} else {
-		console.log(todayActivity.sessions)
-		const sessionsFormatted = todayFormatter(todayActivity.sessions)
-
+		//console.log(todayActivity)
+		const sessionsFormatted = todayFormatter(todayActivity)
+		console.log(sessionsFormatted)
 		return (
 			<div className={styles.main}>
 				<section className={styles.section}>

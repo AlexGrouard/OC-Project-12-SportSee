@@ -1,19 +1,21 @@
-import { UserActivity } from "../type/Types"
+import { UserActivity, FormattedActivityData, UserSessions } from "../type/Types"
 
-export function todayFormatter({ id, sessions }: UserActivity[]) {
-	let sessionFormatted = []
+export function todayFormatter({ id, sessions }: UserActivity) {
+	let sessionFormatted: UserSessions[]
+	let allSessionFormatted: FormattedActivityData
+	sessions.forEach((session) => {
+		const twoDigitDay = session.day.substring(8, 10)
+		if (twoDigitDay.charAt(0) === "0") {
+			const oneDigitDay = twoDigitDay.charAt(1)
+			sessionFormatted.push(oneDigitDay)
+		} else {
+			sessionFormatted.push(twoDigitDay)
+		}
+		sessionFormatted.push(session.kilogram)
+		sessionFormatted.push(session.calories)
+	})
 
-	const twoDigitDay = day.substring(9, 10)
-	if (twoDigitDay.substring(0) === "0") {
-		const oneDigitDay = twoDigitDay.substring(1)
-		sessionFormatted.push(oneDigitDay)
-	} else {
-		sessionFormatted.push(twoDigitDay)
-	}
-	sessionFormatted.push(kilogram)
-	sessionFormatted.push(calories)
-
-	return sessionFormatted
+	//return sessionFormatted
 	//get data from the api
 	//use subtring to keep on the 9-10th caracter
 	//if the first caracter is 0 remove it
