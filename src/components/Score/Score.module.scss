@@ -8,5 +8,23 @@
 }
 
 .insideText{
-    position: absolute;
+    @include flex-center;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    border-radius: 50%;
+    width: 175px;
+    height: 175px;
+    margin-top: -220px;
+    margin-left: 43px;
+    color: $caloriesColor;
+    font-weight: bold;
+    background-color: white;
+    .percent{
+        color: black;
+        font-size: 28px;
+    }
+    div{
+        margin-bottom: 10px;
+    }
 }

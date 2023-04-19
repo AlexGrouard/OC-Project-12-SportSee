@@ -8,25 +8,33 @@
 .section {
     width: 100%;
 }
-.title {
-    font-size: 28px;
-}
+
 .today{
     margin-top: 77px;
+    max-width: 95%;
 }
 .graphs{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 20px;
-}
-.name{
-    color: $red;
+    max-width: 95%;
 }
 
 .sideCard{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 20px;
-    padding-top: 13vh;
+    margin-right: 90px;
+    padding-top: 15vh;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    .main{
+        flex-wrap: wrap;
+    }
+    .sideCard{
+        flex-direction: row;
+        padding-top : 2vh
+    }
+
 }

@@ -1,0 +1,18 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.link{
+    @include flex-center;
+    flex-direction: column;
+    justify-content: center;
+    button{
+        width : 200px;
+        height: 50px;
+        font-size: 26px;
+        color: $red;
+        background-color: $backgroundGrey;
+        border: 1px solid $red;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+}

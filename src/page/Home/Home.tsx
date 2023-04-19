@@ -6,44 +6,56 @@ import Performance from "../../components/Performance/Performance"
 import Score from "../../components/Score/Score"
 import Title from "../../components/Title/Title"
 import Today from "../../components/Today/Today"
-import { todayFormatter } from "../../formatter/formatter"
-import { UserActivity, UserAverage, UserType } from "../../type/Types"
+import Error from "../404/Error"
+import {
+	averageFormatter,
+	performanceFormatter,
+	todayFormatter,
+} from "../../formatter/formatter"
+import {
+	AverageSession,
+	PerfData,
+	UserSessions,
+	UserType,
+} from "../../type/Types"
 import {
 	getAverage,
+	getPerformance,
 	getTodayActivity,
-	// getPerformance,
 	getUserByID,
 } from "../../utils/getApiData"
 import styles from "./Home.module.scss"
 
 function Home(): JSX.Element {
 	const [user, setUser] = useState<UserType>()
-	const [todayActivity, setTodayActivity] = useState<UserActivity>()
-	const [average, setAverage] = useState<UserAverage>()
-	// const [performance, setPerformance] = useState<UserPerformance>()
+	const [todayActivity, setTodayActivity] = useState<UserSessions[]>()
+	const [average, setAverage] = useState<AverageSession[]>()
+	const [performance, setPerformance] = useState<PerfData[]>()
 	const { id } = useParams()
 
 	useEffect(() => {
 		async function loadData() {
 			const userLoaded = await getUserByID(id)
-			const todayActivity = await getTodayActivity(id)
-			const average = await getAverage(id)
-			// const performance = await getPerformance(id)
+			const todayActivityLoaded = await getTodayActivity(id)
+			const averageLoaded = await getAverage(id)
+			const performanceLoaded = await getPerformance(id)
 			setUser(userLoaded)
-			setTodayActivity(todayActivity)
-			setAverage(average)
-			//setPerformance(performance)
+			setTodayActivity(await todayFormatter(todayActivityLoaded))
+			setAverage(await averageFormatter(averageLoaded))
+			setPerformance(await performanceFormatter(performanceLoaded))
 		}
 		loadData()
 	}, [id])
 
-	if (!user || !todayActivity || !average) {
-		return <div>Chargement en cours</div>
+	if (!user || !todayActivity || !average || !performance) {
+		return <Error />
 	} else {
-		//console.log(todayActivity)
-		const sessionsFormatted = todayFormatter(todayActivity)
-		//console.log(sessionsFormatted)
-		//console.log(average)
+		let userScore
+		if (!user.todayScore) {
+			userScore = <Score todayScore={user.score} />
+		} else {
+			userScore = <Score todayScore={user.todayScore} />
+		}
 		return (
 			<div className={styles.main}>
 				<section className={styles.section}>
@@ -52,12 +64,12 @@ function Home(): JSX.Element {
 						todayScore={user.todayScore}
 					/>
 					<div className={styles.today}>
-						<Today sessions={sessionsFormatted} />
+						<Today sessions={todayActivity} />
 					</div>
 					<div className={styles.graphs}>
-						<Average id={average.id} sessions={average.sessions}/>
-						<Performance />
-						<Score todayScore={user.todayScore} />
+						<Average sessions={average} />
+						<Performance data={performance} />
+						{userScore}
 					</div>
 				</section>
 				<aside className={styles.sideCard}>

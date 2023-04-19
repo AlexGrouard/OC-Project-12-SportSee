@@ -6,42 +6,14 @@ import {
 	Tooltip,
 	XAxis,
 } from "recharts"
-import { UserAverage } from "../../type/Types"
+import { AverageSession } from "../../type/Types"
 import styles from "./Average.module.scss"
 
-/* const sessions = [
-	{
-		day: 1,
-		sessionLength: 30,
-	},
-	{
-		day: 2,
-		sessionLength: 40,
-	},
-	{
-		day: 3,
-		sessionLength: 50,
-	},
-	{
-		day: 4,
-		sessionLength: 30,
-	},
-	{
-		day: 5,
-		sessionLength: 30,
-	},
-	{
-		day: 6,
-		sessionLength: 50,
-	},
-	{
-		day: 7,
-		sessionLength: 50,
-	},
-] */
+type AverageProps = {
+	sessions: AverageSession[]
+}
 
-function Average({ id, sessions }: UserAverage): JSX.Element {
-	console.log(sessions)
+function Average({ sessions }: AverageProps): JSX.Element {
 	return (
 		<div className={styles.main}>
 			<ResponsiveContainer width='100%' height='100%'>

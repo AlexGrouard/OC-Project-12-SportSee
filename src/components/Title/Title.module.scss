@@ -1,6 +1,18 @@
 @import '../../style/variables';
 @import '../../style/mixins';
 
-.name{
-    color:$red
+.main {
+    max-width: 70%;
+    font-weight: 500;
+}
+.title{
+    font-size: 48px;
+    font-weight: bold;
+    .name{
+        color:$red
+    }    
+}
+
+.message {
+    margin-top: 40px;
 }

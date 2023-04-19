@@ -5,8 +5,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    //height: 124px;
-    //width: 258px;
     background-color: $backgroundGrey;
     border-radius: $radius;
 }
@@ -24,4 +22,17 @@ img{
 .type {
     color:$caloriesColor;
     font-weight: 500;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    .main{
+        margin-right: 10px;
+    }
+    img{
+        margin: 20px;
+    }
+
+    .text{
+        margin-right: 20px;
+    }
 }

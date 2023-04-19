@@ -14,7 +14,12 @@ export type UserType = {
 	id: number
 	userInfos: UserInfo
 	todayScore: number
+	score: number
 	keyData: KeyData
+}
+
+export type UserScore = {
+	score: number
 }
 
 export type UserSessions = {
@@ -35,36 +40,33 @@ export type UserActivity = {
 }
 export type UserAverage = {
 	id: number
-	sessions: AverageSession
+	sessions: [
+		{
+			day: number
+			sessionLength: number
+		}
+	]
 }
 
 export type AverageSession = {
-	day: number
+	day: string
 	sessionLength: number
 }
 
 export type UserPerformance = {
 	id: number
-	kind: PerfKind
-	data: PerfData
-}
-
-export type PerfKind = {
-	1: string
-	2: string
-	3: string
-	4: string
-	5: string
-	6: string
+	kind: { 1: string; 2: string; 3: string; 4: string; 5: string; 6: string }
+	data: [
+		{
+			value: number
+			kind: number
+		}
+	]
 }
 
 export type PerfData = {
 	value: number
-	kind: number
-}
-
-export type FormattedActivityData = {
-	formattedData: UserSessions
+	kind: string
 }
 
 export type TitleProps = {
@@ -77,7 +79,3 @@ export type CardProps = {
 	type: string
 }
 
-export type ScoreProps = {
-	//scoreChartData: TodayScoreFormatted
-	todayScore: number
-}

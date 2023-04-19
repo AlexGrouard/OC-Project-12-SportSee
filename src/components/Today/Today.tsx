@@ -8,11 +8,11 @@ import {
 	XAxis,
 	YAxis,
 } from "recharts"
-import { UserActivity } from "../../type/Types"
+import { UserSessions } from "../../type/Types"
 import styles from "./Today.module.scss"
+type TodayProps = { sessions: UserSessions[] }
 
-function Today({ id, sessions }: UserActivity): JSX.Element {
-	console.log(sessions)
+function Today({ sessions }: TodayProps): JSX.Element {
 	return (
 		<div className={styles.main}>
 			<span className={styles.title}>Activité quotidienne</span>

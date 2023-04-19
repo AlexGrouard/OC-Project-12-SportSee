@@ -10,12 +10,11 @@ function Title({ userName, todayScore }: TitleProps) {
 	}
 	return (
 		<div className={styles.main}>
-			<div className={styles.title}>
-				<h1>
+
+				<div className={styles.title}>
 					Bonjour <span className={styles.name}>{userName}</span>
-				</h1>
+				</div>
 				<div className={styles.message}>{perfMessage}</div>
-			</div>
 		</div>
 	)
 }
