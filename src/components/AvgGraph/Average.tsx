@@ -14,13 +14,22 @@ type AverageProps = {
 }
 
 function Average({ sessions }: AverageProps): JSX.Element {
+	const renderLegend = () => {
+		return <div className={styles.title}>Durée moyenne des sessions</div>
+	}
 	return (
 		<div className={styles.main}>
 			<ResponsiveContainer width='100%' height='100%'>
 				<LineChart data={sessions}>
-					<XAxis dataKey='day' stroke='#FFFFFF' opacity={0.5} />
+					<XAxis
+						dataKey='day'
+						stroke='#FFFFFF'
+						opacity={0.5}
+						axisLine={false}
+						tickLine={false}
+					/>
 					<Tooltip />
-					<Legend />
+					<Legend content={renderLegend} verticalAlign='top' width={160} />
 					<Line
 						type='natural'
 						stroke='#FFFFFF'

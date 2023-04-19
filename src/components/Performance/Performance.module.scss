@@ -5,4 +5,8 @@
     height: 263px;
     background-color: $darkgray;
     border-radius: $radius;
+    .recharts-polar-angle-axis-tick {
+        transform: translateY(-5rem);
+    }
 }
+

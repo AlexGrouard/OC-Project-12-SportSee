@@ -115,42 +115,42 @@ export async function performanceFormatter({
 				case 1:
 					const cardio: PerfData = {
 						value: el.value,
-						kind: kind[1],
+						kind: "Cardio",
 					}
 					dataFormatted.push(cardio)
 					break
 				case 2:
 					const energy: PerfData = {
 						value: el.value,
-						kind: kind[2],
+						kind: "Energie",
 					}
 					dataFormatted.push(energy)
 					break
 				case 3:
 					const endurance: PerfData = {
 						value: el.value,
-						kind: kind[3],
+						kind: "Endurance",
 					}
 					dataFormatted.push(endurance)
 					break
 				case 4:
 					const strength: PerfData = {
 						value: el.value,
-						kind: kind[4],
+						kind: "Force",
 					}
 					dataFormatted.push(strength)
 					break
 				case 5:
 					const speed: PerfData = {
 						value: el.value,
-						kind: kind[5],
+						kind: "Vitesse",
 					}
 					dataFormatted.push(speed)
 					break
 				case 6:
 					const intensity: PerfData = {
 						value: el.value,
-						kind: kind[6],
+						kind: "Intensité",
 					}
 					dataFormatted.push(intensity)
 					break
