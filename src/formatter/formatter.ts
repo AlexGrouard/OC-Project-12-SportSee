@@ -1,25 +1,30 @@
-import { UserActivity, FormattedActivityData, UserSessions } from "../type/Types"
+import { UserActivity, UserSessions } from "../type/Types"
 
-export function todayFormatter({ id, sessions }: UserActivity) {
-	let sessionFormatted: UserSessions[]
-	let allSessionFormatted: FormattedActivityData
+//get data from the api
+//use subtring to keep on the 9-10th caracter
+//if the first caracter is 0 remove it
+//then return the data to the graph module
+export function todayFormatter({ id, sessions }: UserActivity): UserSessions[] {
+	let sessionFormatted: UserSessions[] = []
 	sessions.forEach((session) => {
 		const twoDigitDay = session.day.substring(8, 10)
 		if (twoDigitDay.charAt(0) === "0") {
-			const oneDigitDay = twoDigitDay.charAt(1)
-			sessionFormatted.push(oneDigitDay)
+			const formatted: UserSessions = {
+				day: twoDigitDay.charAt(1),
+				kilogram: session.kilogram,
+				calories: session.calories,
+			}
+			sessionFormatted.push(formatted)
 		} else {
-			sessionFormatted.push(twoDigitDay)
+			const formatted: UserSessions = {
+				day: twoDigitDay,
+				kilogram: session.kilogram,
+				calories: session.calories,
+			}
+			sessionFormatted.push(formatted)
 		}
-		sessionFormatted.push(session.kilogram)
-		sessionFormatted.push(session.calories)
 	})
-
-	//return sessionFormatted
-	//get data from the api
-	//use subtring to keep on the 9-10th caracter
-	//if the first caracter is 0 remove it
-	//then return the data to the graph module
+	return sessionFormatted
 }
 
 export function scoreFormatter() {

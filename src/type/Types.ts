@@ -19,7 +19,7 @@ export type UserType = {
 
 export type UserSessions = {
 	day: string
-	kilograms: number
+	kilogram: number
 	calories: number
 }
 
@@ -33,7 +33,6 @@ export type UserActivity = {
 		}
 	]
 }
-
 export type UserAverage = {
 	id: number
 	sessions: AverageSession
@@ -65,7 +64,7 @@ export type PerfData = {
 }
 
 export type FormattedActivityData = {
-	data: UserSessions[]
+	formattedData: UserSessions
 }
 
 export type TitleProps = {

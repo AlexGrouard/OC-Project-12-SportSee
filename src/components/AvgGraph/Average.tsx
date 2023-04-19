@@ -6,9 +6,10 @@ import {
 	Tooltip,
 	XAxis,
 } from "recharts"
+import { UserAverage } from "../../type/Types"
 import styles from "./Average.module.scss"
 
-const sessions = [
+/* const sessions = [
 	{
 		day: 1,
 		sessionLength: 30,
@@ -37,9 +38,10 @@ const sessions = [
 		day: 7,
 		sessionLength: 50,
 	},
-]
+] */
 
-function Average(): JSX.Element {
+function Average({ id, sessions }: UserAverage): JSX.Element {
+	console.log(sessions)
 	return (
 		<div className={styles.main}>
 			<ResponsiveContainer width='100%' height='100%'>

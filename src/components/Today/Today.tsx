@@ -11,50 +11,13 @@ import {
 import { UserActivity } from "../../type/Types"
 import styles from "./Today.module.scss"
 
-function Today({ sessions }: UserActivity): JSX.Element {
+function Today({ id, sessions }: UserActivity): JSX.Element {
 	console.log(sessions)
-	const data = [
-		{
-			day: "2020-07-01",
-			kilogram: 70,
-			calories: 240,
-		},
-		{
-			day: "2020-07-02",
-			kilogram: 69,
-			calories: 220,
-		},
-		{
-			day: "2020-07-03",
-			kilogram: 70,
-			calories: 280,
-		},
-		{
-			day: "2020-07-04",
-			kilogram: 70,
-			calories: 500,
-		},
-		{
-			day: "2020-07-05",
-			kilogram: 69,
-			calories: 160,
-		},
-		{
-			day: "2020-07-06",
-			kilogram: 69,
-			calories: 162,
-		},
-		{
-			day: "2020-07-07",
-			kilogram: 69,
-			calories: 390,
-		},
-	]
 	return (
 		<div className={styles.main}>
 			<span className={styles.title}>Activité quotidienne</span>
 			<ResponsiveContainer height='90%'>
-				<BarChart data={data} barCategoryGap={30}>
+				<BarChart data={sessions} barCategoryGap={30}>
 					<CartesianGrid strokeDasharray='3 3' vertical={false} />
 					<XAxis dataKey='day' />
 					<YAxis

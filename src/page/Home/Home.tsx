@@ -7,10 +7,10 @@ import Score from "../../components/Score/Score"
 import Title from "../../components/Title/Title"
 import Today from "../../components/Today/Today"
 import { todayFormatter } from "../../formatter/formatter"
-import { UserActivity, UserType } from "../../type/Types"
+import { UserActivity, UserAverage, UserType } from "../../type/Types"
 import {
+	getAverage,
 	getTodayActivity,
-	// getAverage,
 	// getPerformance,
 	getUserByID,
 } from "../../utils/getApiData"
@@ -19,7 +19,7 @@ import styles from "./Home.module.scss"
 function Home(): JSX.Element {
 	const [user, setUser] = useState<UserType>()
 	const [todayActivity, setTodayActivity] = useState<UserActivity>()
-	// const [average, setAverage] = useState<UserAverage>()
+	const [average, setAverage] = useState<UserAverage>()
 	// const [performance, setPerformance] = useState<UserPerformance>()
 	const { id } = useParams()
 
@@ -27,22 +27,23 @@ function Home(): JSX.Element {
 		async function loadData() {
 			const userLoaded = await getUserByID(id)
 			const todayActivity = await getTodayActivity(id)
-			// const average = await getAverage(id)
+			const average = await getAverage(id)
 			// const performance = await getPerformance(id)
 			setUser(userLoaded)
 			setTodayActivity(todayActivity)
-			//setAverage(average)
+			setAverage(average)
 			//setPerformance(performance)
 		}
 		loadData()
 	}, [id])
 
-	if (!user || !todayActivity) {
+	if (!user || !todayActivity || !average) {
 		return <div>Chargement en cours</div>
 	} else {
 		//console.log(todayActivity)
 		const sessionsFormatted = todayFormatter(todayActivity)
-		console.log(sessionsFormatted)
+		//console.log(sessionsFormatted)
+		//console.log(average)
 		return (
 			<div className={styles.main}>
 				<section className={styles.section}>
@@ -51,10 +52,10 @@ function Home(): JSX.Element {
 						todayScore={user.todayScore}
 					/>
 					<div className={styles.today}>
-						{/* <Today sessions={sessionsFormatted}/> */}
+						<Today sessions={sessionsFormatted} />
 					</div>
 					<div className={styles.graphs}>
-						<Average />
+						<Average id={average.id} sessions={average.sessions}/>
 						<Performance />
 						<Score todayScore={user.todayScore} />
 					</div>
