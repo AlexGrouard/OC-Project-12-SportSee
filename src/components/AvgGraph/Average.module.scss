@@ -11,3 +11,14 @@
     margin: 25px;
     opacity: 0.5;
  }
+ .tooltip{
+    background-color: white;
+    border-radius: 0;
+    border: 1px solid $red;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    p{
+        margin: 10px;
+    }
+}

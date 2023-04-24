@@ -28,7 +28,7 @@ function Today({ sessions }: TodayProps): JSX.Element {
 		}
 		return null
 	}
-
+	//Custom Legend with title
 	const renderLegend = ({ payload }: any) => {
 		return (
 			<div className={styles.legendContainer}>

@@ -17,7 +17,10 @@ function Performance({ data }: PerfProps): JSX.Element {
 			<ResponsiveContainer width='100%' height='100%'>
 				<RadarChart data={data} outerRadius={90}>
 					<PolarGrid gridType='polygon' radialLines={false} />
-					<PolarAngleAxis dataKey='kind' tick={{fontSize: 15, fill: 'white'}}/>
+					<PolarAngleAxis
+						dataKey='kind'
+						tick={{ fontSize: 12, fill: "white" }}
+					/>
 					<Radar dataKey='value' fill='#FF0101' fillOpacity={0.6} />
 				</RadarChart>
 			</ResponsiveContainer>

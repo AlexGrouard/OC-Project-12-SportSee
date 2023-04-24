@@ -17,6 +17,16 @@ function Average({ sessions }: AverageProps): JSX.Element {
 	const renderLegend = () => {
 		return <div className={styles.title}>Durée moyenne des sessions</div>
 	}
+	const CustomTooltip = ({ payload }: any) => {
+		if (payload && payload.length) {
+			return (
+				<div className={styles.tooltip}>
+					<p className={styles.minutes}>{`${payload[0].value} min`}</p>
+				</div>
+			)
+		}
+		return null
+	}
 	return (
 		<div className={styles.main}>
 			<ResponsiveContainer width='100%' height='100%'>
@@ -28,7 +38,6 @@ function Average({ sessions }: AverageProps): JSX.Element {
 						axisLine={false}
 						tickLine={false}
 					/>
-					<Tooltip />
 					<Legend content={renderLegend} verticalAlign='top' width={160} />
 					<Line
 						type='natural'
@@ -37,6 +46,7 @@ function Average({ sessions }: AverageProps): JSX.Element {
 						opacity={0.5}
 						dot={false}
 					/>
+					<Tooltip content={CustomTooltip} />
 				</LineChart>
 			</ResponsiveContainer>
 		</div>
