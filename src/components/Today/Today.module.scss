@@ -11,7 +11,32 @@
         font-weight: bold;
     }
 }
+.tooltip{
+    background-color: $red;
+    color: white;
+    border-radius: 0;
+    border: 1px solid $red;
+    text-align: center;
+    font-size: 12px;
+    p{
+        margin: 20px 10px;
+    }
+}
+.legendContainer {
+   @include flex-center;
+   justify-content: space-between;
+}
 
+.legend{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    color: $caloriesColor;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 40px;
+}
 
 @media screen and (min-width: 1024px) and (max-width: 1440px) {
     .main {

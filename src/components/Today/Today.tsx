@@ -8,14 +8,43 @@ import {
 	XAxis,
 	YAxis,
 } from "recharts"
+import blackDot from "../../assets/blackDot.svg"
+import redDot from "../../assets/redDot.svg"
 import { UserSessions } from "../../type/Types"
 import styles from "./Today.module.scss"
+
 type TodayProps = { sessions: UserSessions[] }
 
 function Today({ sessions }: TodayProps): JSX.Element {
+	//modify tooltip with the right data
+	const CustomTooltip = ({ payload }: any) => {
+		if (payload && payload.length) {
+			return (
+				<div className={styles.tooltip}>
+					<p className={styles.kilo}>{`${payload[0].value}kg`}</p>
+					<p className={styles.calories}>{`${payload[1].value}kCal`}</p>
+				</div>
+			)
+		}
+		return null
+	}
+
+	const renderLegend = ({ payload }: any) => {
+		return (
+			<div className={styles.legendContainer}>
+				<span className={styles.title}>Activité quotidienne</span>
+				<ul className={styles.legend}>
+					<img src={redDot} alt='poids' />
+					<li key={`${payload[0].value}`}>Poids (kg)</li>
+					<img src={blackDot} alt='poids' />
+					<li key={`${payload[1].value}`}>Calories brulées (kCal)</li>
+				</ul>
+			</div>
+		)
+	}
+
 	return (
 		<div className={styles.main}>
-			<span className={styles.title}>Activité quotidienne</span>
 			<ResponsiveContainer height='90%'>
 				<BarChart data={sessions} barCategoryGap={30}>
 					<CartesianGrid strokeDasharray='3 3' vertical={false} />
@@ -43,8 +72,9 @@ function Today({ sessions }: TodayProps): JSX.Element {
 						iconType='circle'
 						iconSize={10}
 						height={100}
+						content={renderLegend}
 					/>
-					<Tooltip />
+					<Tooltip content={CustomTooltip} />
 					<Bar
 						dataKey='kilogram'
 						fill='#020203'
