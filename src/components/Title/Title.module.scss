@@ -16,3 +16,12 @@
 .message {
     margin-top: 40px;
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    .title{
+        font-size: 30px;
+    }
+    .message {
+        margin-top: 20px;
+    }
+}

@@ -34,7 +34,12 @@
     }
     .sideCard{
         flex-direction: row;
-        padding-top : 2vh
+        padding-top : 2vh;
+        justify-content: space-around;
+    }
+    .today{
+        margin-top: 30px;
+        max-width: 100%;
     }
 
 }

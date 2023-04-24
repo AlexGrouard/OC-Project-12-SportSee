@@ -11,3 +11,11 @@
         font-weight: bold;
     }
 }
+
+
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    .main {
+        width: 95%;
+        height: 300px;
+    }
+}
