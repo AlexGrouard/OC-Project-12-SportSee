@@ -14,10 +14,10 @@ This project work in conjonction with a back-end API/ or Mockup data.
 
 ### Dependencies
 
-- react-router-dom
-- recharts
-- sass
-- axios
+- [react-router-dom](https://reactrouter.com/en/main)
+- [recharts](https://recharts.org/en-US/)
+- [sass](https://sass-lang.com/)
+- [axios](https://axios-http.com/fr/docs/intro)
 
 ## Installation
 
@@ -29,16 +29,13 @@ This project work in conjonction with a back-end API/ or Mockup data.
 
 ### Backend Install
 
-First clone the repo from [https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard).
-The `yarn` command will allow you to install the dependencies.
-
-The `yarn dev` command will allow you to run the micro API.
+- First clone the repo from [https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard).
+- The `yarn` command will allow you to install the dependencies.
+- The `yarn dev` command will allow you to run the micro API.
 
 ### Front-end Install
 
-Then clone this repo.
-
-cd into it.
-
-run the `npm start` command to launch the project
-type yes when prompted
+- Then clone this repo.
+- cd into it.
+- run the `npm start` command to launch the project
+- type yes when prompted
