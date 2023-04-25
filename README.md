@@ -1,10 +1,10 @@
 # Project SportSee
 
-Project n°12 of OpenClassrooms Front-end Developper curriculum
+Project n°12 of OpenClassrooms Front-end Developper curriculum.
 
 ## Introduction
 
-This project work in conjonction with a back-end API/ or Mockup data
+This project work in conjonction with a back-end API/ or Mockup data.
 
 ### Technologies
 
@@ -26,14 +26,19 @@ This project work in conjonction with a back-end API/ or Mockup data
 - [npm](https://www.npmjs.com/)
 - [yarn](https://yarnpkg.com/getting-started/install)
 
+### Backend Install
 
-Backend Install
-First clone the repo from [https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
+First clone the repo from [https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard).
+
 The `yarn` command will allow you to install the dependencies.
+
 The `yarn dev` command will allow you to run the micro API.
 
-Front-end Install
-Then clone this repo
-cd into it
+### Front-end Install
+
+Then clone this repo.
+
+cd into it.
+
 run the `npm start` command to launch the project
 type yes when prompted
