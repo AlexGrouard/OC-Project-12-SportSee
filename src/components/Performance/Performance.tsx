@@ -10,7 +10,10 @@ import styles from "./Performance.module.scss"
 type PerfProps = {
 	data: PerfData[]
 }
-
+/** Render the Performance graphs
+ * @params  {Object} data - Take an Array of object formatted by the formatter
+ * @return {JSX}
+ */
 function Performance({ data }: PerfProps): JSX.Element {
 	return (
 		<div className={styles.main}>

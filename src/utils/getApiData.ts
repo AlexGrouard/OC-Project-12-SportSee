@@ -8,7 +8,13 @@ import {
 
 const url = "http://localhost:3000/"
 
-export async function getUserByID(id: string | undefined): Promise<UserType> {
+/**
+ * fetch global user data form mockup Data
+ *
+ * @param id - user id
+ * @returns - return a promise of user data
+ */
+export async function getUserByID(id: string): Promise<UserType> {
 	try {
 		const {
 			data: { data },
@@ -19,9 +25,13 @@ export async function getUserByID(id: string | undefined): Promise<UserType> {
 	}
 }
 
-export async function getTodayActivity(
-	id: string | undefined
-): Promise<UserActivity> {
+/**
+ * fetch activity data form mockup Data
+ *
+ * @param id - user id
+ * @returns - return a promise of id and an array of sessions data for the main graph
+ */
+export async function getTodayActivity(id: string): Promise<UserActivity> {
 	try {
 		const {
 			data: { data },
@@ -32,7 +42,13 @@ export async function getTodayActivity(
 	}
 }
 
-export async function getAverage(id: string | undefined): Promise<UserAverage> {
+/**
+ * fetch Average score form mockup Data
+ *
+ * @param id - user id
+ * @returns - return a promise of id and an array of sessions data for the average graph
+ */
+export async function getAverage(id: string): Promise<UserAverage> {
 	try {
 		const {
 			data: { data },
@@ -43,9 +59,13 @@ export async function getAverage(id: string | undefined): Promise<UserAverage> {
 	}
 }
 
-export async function getPerformance(
-	id: string | undefined
-): Promise<UserPerformance> {
+/**
+ * fetch Performance score form mockup Data
+ *
+ * @param id - user id
+ * @returns - return a promise of id and an array of sessions data for the Performance graph
+ */
+export async function getPerformance(id: string): Promise<UserPerformance> {
 	try {
 		const {
 			data: { data },

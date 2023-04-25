@@ -7,10 +7,12 @@ import {
 	UserSessions,
 } from "../type/Types"
 
-//get data from the api
-//use subtring to keep on the 9-10th caracter
-//if the first caracter is 0 remove it
-//then return the data to the graph module
+/** send formatted data for today graph
+ * remove the most of the date and keep only the day without 0
+ * @params  {number} id - not in use at the moment
+ * @params {Array} sessions - raw data from the API
+ * @return {Promise} - formatted data array for today graph
+ */
 export async function todayFormatter({
 	id,
 	sessions,
@@ -41,7 +43,12 @@ export async function todayFormatter({
 	}
 }
 
-//change the day from a number to a letter
+/** send formatted data for today graph
+ * change the day from a number to a letter
+ * @params  {number} id - not in use at the moment
+ * @params {Array} sessions - raw data from the API
+ * @return {Promise} - formatted data array for average graph
+ */
 export async function averageFormatter({
 	id,
 	sessions,
@@ -103,6 +110,13 @@ export async function averageFormatter({
 	}
 }
 
+/** send formatted data for today graph
+ * change the kind from a number to the corresponding category
+ * @params  {number} id - not in use at the moment
+ *  * @params  {number} kind - not in use at the moment
+ * @params {Array} data - raw data from the API
+ * @return {Promise} - formatted data array for Performance graph
+ */
 export async function performanceFormatter({
 	id,
 	kind,

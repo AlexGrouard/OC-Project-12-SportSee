@@ -1,3 +1,7 @@
+/** Type List for all my app
+ *
+ */
+
 export type UserInfo = {
 	firstName: string
 	lastNumber: string

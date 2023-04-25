@@ -4,7 +4,10 @@ import styles from "./Score.module.scss"
 type ScoreProps = {
 	todayScore: number
 }
-
+/** Render the Score graphs
+ * @params  {Object} todayScore - User TodayScore or score form the main user data
+ * @return {JSX}
+ */
 function Score({ todayScore }: ScoreProps): JSX.Element {
 	//formatting
 	const scoreInPercent = todayScore * 100
@@ -28,6 +31,7 @@ function Score({ todayScore }: ScoreProps): JSX.Element {
 		</div>
 	)
 	const COLORS = ["#FF0101", "#FBFBFB"]
+
 	return (
 		<div className={styles.main}>
 			<ResponsiveContainer width='100%' height='100%'>

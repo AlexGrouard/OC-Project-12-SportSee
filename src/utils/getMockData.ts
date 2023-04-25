@@ -1,4 +1,5 @@
-import {
+/* export{} */
+ import {
 	USER_ACTIVITY,
 	USER_AVERAGE_SESSIONS,
 	USER_MAIN_DATA,
@@ -13,24 +14,23 @@ import {
 /**
  * fetch global user data form mockup Data
  *
- * @param {string} id - user id
- * @returns {Promise<UserType>} - return user data
+ * @param id - user id
+ * @returns - return a promise of user data
  */
 export async function getUserByID(id: string): Promise<UserType> {
 	try {
 		const data = USER_MAIN_DATA.find((user) => user.id === parseInt(id))
-		console.log(data)
-		//return data
+		return data
 	} catch (e) {
 		throw new Error(`${e}`)
 	}
 }
 
 /**
- * fetch global user data form mockup Data
+ * fetch activity data form mockup Data
  *
- * @param {string} id - user id
- * @returns {Promise<UserActivity>} - return a promise of id and an array of sessions data for the main graph
+ * @param id - user id
+ * @returns - return a promise of id and an array of sessions data for the main graph
  */
 
 export async function getTodayActivity(id: string): Promise<UserActivity> {
@@ -42,6 +42,12 @@ export async function getTodayActivity(id: string): Promise<UserActivity> {
 	}
 }
 
+/**
+ * fetch Average score form mockup Data
+ *
+ * @param id - user id
+ * @returns - return a promise of id and an array of sessions data for the average graph
+ */
 export async function getAverage(id: string): Promise<UserAverage> {
 	try {
 		const data = USER_AVERAGE_SESSIONS.find(
@@ -53,6 +59,12 @@ export async function getAverage(id: string): Promise<UserAverage> {
 	}
 }
 
+/**
+ * fetch Performance score form mockup Data
+ *
+ * @param id - user id
+ * @returns - return a promise of id and an array of sessions data for the Performance graph
+ */
 export async function getPerformance(id: string): Promise<UserPerformance> {
 	try {
 		const data = USER_PERFORMANCE.find((user) => user.userId === parseInt(id))

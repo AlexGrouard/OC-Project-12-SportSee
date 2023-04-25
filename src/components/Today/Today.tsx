@@ -14,7 +14,10 @@ import { UserSessions } from "../../type/Types"
 import styles from "./Today.module.scss"
 
 type TodayProps = { sessions: UserSessions[] }
-
+/** Render the Average graphs
+ * @params  {Object} sessions - Take an Array of object formatted by the formatter
+ * @return {JSX}
+ */
 function Today({ sessions }: TodayProps): JSX.Element {
 	//modify tooltip with the right data
 	const CustomTooltip = ({ payload }: any) => {

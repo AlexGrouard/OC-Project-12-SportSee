@@ -33,6 +33,9 @@ import {
 
 import styles from "./Home.module.scss"
 
+/**Render the dashboard
+ * @return {JSX}
+ */
 function Home(): JSX.Element {
 	const [user, setUser] = useState<UserType>()
 	const [todayActivity, setTodayActivity] = useState<UserSessions[]>()
@@ -40,30 +43,35 @@ function Home(): JSX.Element {
 	const [performance, setPerformance] = useState<PerfData[]>()
 	const { id } = useParams()
 
-	//API call
+	//API call when react has catch the ID from the adress parameter
 	useEffect(() => {
 		async function loadData() {
-			const userLoaded = await getUserByID(id)
-			const todayActivityLoaded = await getTodayActivity(id)
-			const averageLoaded = await getAverage(id)
-			const performanceLoaded = await getPerformance(id)
-			setUser(userLoaded)
-			setTodayActivity(await todayFormatter(todayActivityLoaded))
-			setAverage(await averageFormatter(averageLoaded))
-			setPerformance(await performanceFormatter(performanceLoaded))
+			if (id) {
+				const userLoaded = await getUserByID(id)
+				const todayActivityLoaded = await getTodayActivity(id)
+				const averageLoaded = await getAverage(id)
+				const performanceLoaded = await getPerformance(id)
+				setUser(userLoaded)
+				setTodayActivity(await todayFormatter(todayActivityLoaded))
+				setAverage(await averageFormatter(averageLoaded))
+				setPerformance(await performanceFormatter(performanceLoaded))
+			}
 		}
 		loadData()
 	}, [id])
 
+	//Error message if API call fail
 	if (!user || !todayActivity || !average || !performance) {
 		return <Error />
 	} else {
+		//handle the discrepency between the score and todayScor in the API
 		let userScore
 		if (!user.todayScore) {
 			userScore = <Score todayScore={user.score} />
 		} else {
 			userScore = <Score todayScore={user.todayScore} />
 		}
+
 		return (
 			<div className={styles.main}>
 				<section className={styles.section}>

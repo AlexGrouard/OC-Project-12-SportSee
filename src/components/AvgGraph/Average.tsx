@@ -13,7 +13,13 @@ type AverageProps = {
 	sessions: AverageSession[]
 }
 
+/** Render the Average graphs
+ * @params  {Object} sessions - Take an Array of object formatted by the formatter
+ * @return {JSX}
+ */
+
 function Average({ sessions }: AverageProps): JSX.Element {
+	// custom legend and tooltip for the graph
 	const renderLegend = () => {
 		return <div className={styles.title}>Durée moyenne des sessions</div>
 	}
@@ -27,6 +33,7 @@ function Average({ sessions }: AverageProps): JSX.Element {
 		}
 		return null
 	}
+
 	return (
 		<div className={styles.main}>
 			<ResponsiveContainer width='100%' height='100%'>
