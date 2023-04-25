@@ -8,8 +8,9 @@ This project work in conjonction with a back-end API/ or Mockup data.
 
 ### Technologies
 
-- <img src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" width="24"/> React
-- <img src="https://user-images.githubusercontent.com/25181517/183890598-19a0ac2d-e88a-4005-a8df-1ee36782fde1.png" width="24"/> TypeScript
+<img src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" width="24"/> React
+
+<img src="https://user-images.githubusercontent.com/25181517/183890598-19a0ac2d-e88a-4005-a8df-1ee36782fde1.png" width="24"/> TypeScript
 
 ### Dependencies
 
@@ -29,7 +30,6 @@ This project work in conjonction with a back-end API/ or Mockup data.
 ### Backend Install
 
 First clone the repo from [https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard).
-
 The `yarn` command will allow you to install the dependencies.
 
 The `yarn dev` command will allow you to run the micro API.
