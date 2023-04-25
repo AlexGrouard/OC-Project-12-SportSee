@@ -6,7 +6,6 @@ import Performance from "../../components/Performance/Performance"
 import Score from "../../components/Score/Score"
 import Title from "../../components/Title/Title"
 import Today from "../../components/Today/Today"
-import Error from "../404/Error"
 import {
 	averageFormatter,
 	performanceFormatter,
@@ -18,18 +17,19 @@ import {
 	UserSessions,
 	UserType,
 } from "../../type/Types"
-import {
-	getAverage,
-	getPerformance,
-	getTodayActivity,
-	getUserByID,
-} from "../../utils/getApiData"
+import Error from "../404/Error"
 /* import {
 	getAverage,
 	getPerformance,
 	getTodayActivity,
 	getUserByID,
-} from "../../utils/getMockData" */
+} from "../../utils/getApiData" */
+import {
+	getAverage,
+	getPerformance,
+	getTodayActivity,
+	getUserByID,
+} from "../../utils/getMockData"
 
 import styles from "./Home.module.scss"
 
@@ -40,6 +40,7 @@ function Home(): JSX.Element {
 	const [performance, setPerformance] = useState<PerfData[]>()
 	const { id } = useParams()
 
+	//API call
 	useEffect(() => {
 		async function loadData() {
 			const userLoaded = await getUserByID(id)

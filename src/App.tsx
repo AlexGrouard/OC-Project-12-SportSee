@@ -1,6 +1,6 @@
 import React from "react"
-import styles from "./style/App.module.scss"
 import Layout from "./layout/Layout"
+import styles from "./style/App.module.scss"
 
 function App(): JSX.Element {
 	return (

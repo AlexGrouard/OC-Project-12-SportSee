@@ -1,4 +1,9 @@
-import { USER_MAIN_DATA } from "../__mock__/data"
+import {
+	USER_ACTIVITY,
+	USER_AVERAGE_SESSIONS,
+	USER_MAIN_DATA,
+	USER_PERFORMANCE,
+} from "../__mock__/data"
 import {
 	UserActivity,
 	UserAverage,
@@ -14,7 +19,8 @@ import {
 export async function getUserByID(id: string): Promise<UserType> {
 	try {
 		const data = USER_MAIN_DATA.find((user) => user.id === parseInt(id))
-		return data
+		console.log(data)
+		//return data
 	} catch (e) {
 		throw new Error(`${e}`)
 	}
@@ -24,39 +30,32 @@ export async function getUserByID(id: string): Promise<UserType> {
  * fetch global user data form mockup Data
  *
  * @param {string} id - user id
- * @returns {Promise<UserActivity>} - return a promise of id and sessions for the main graph
+ * @returns {Promise<UserActivity>} - return a promise of id and an array of sessions data for the main graph
  */
-export async function getTodayActivity(
-	id: string | undefined
-): Promise<UserActivity> {
+
+export async function getTodayActivity(id: string): Promise<UserActivity> {
 	try {
-		const {
-			data: { data },
-		} = await axios.get(`${url}user/${id}/activity`)
+		const data = USER_ACTIVITY.find((user) => user.userId === parseInt(id))
 		return data
 	} catch (e) {
 		throw new Error(`${e}`)
 	}
 }
 
-export async function getAverage(id: string | undefined): Promise<UserAverage> {
+export async function getAverage(id: string): Promise<UserAverage> {
 	try {
-		const {
-			data: { data },
-		} = await axios.get(`${url}user/${id}/average-sessions`)
+		const data = USER_AVERAGE_SESSIONS.find(
+			(user) => user.userId === parseInt(id)
+		)
 		return data
 	} catch (e) {
 		throw new Error(`${e}`)
 	}
 }
 
-export async function getPerformance(
-	id: string | undefined
-): Promise<UserPerformance> {
+export async function getPerformance(id: string): Promise<UserPerformance> {
 	try {
-		const {
-			data: { data },
-		} = await axios.get(`${url}user/${id}/performance`)
+		const data = USER_PERFORMANCE.find((user) => user.userId === parseInt(id))
 		return data
 	} catch (e) {
 		throw new Error(`${e}`)
