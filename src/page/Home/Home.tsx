@@ -24,6 +24,13 @@ import {
 	getTodayActivity,
 	getUserByID,
 } from "../../utils/getApiData"
+/* import {
+	getAverage,
+	getPerformance,
+	getTodayActivity,
+	getUserByID,
+} from "../../utils/getMockData" */
+
 import styles from "./Home.module.scss"
 
 function Home(): JSX.Element {
