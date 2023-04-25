@@ -6,17 +6,19 @@
     background-color: $backgroundGrey;
     border-radius: $radius;
 }
-
+.title {
+    margin: 25px
+}
 .insideText{
     @include flex-center;
     flex-direction: column;
     justify-content: center;
     position: relative;
     border-radius: 50%;
-    width: 175px;
-    height: 175px;
-    margin-top: -220px;
-    margin-left: 43px;
+    width: 157px;
+    height: 157px;
+    margin-top: -207px;
+    margin-left: 56px;
     color: $caloriesColor;
     font-weight: bold;
     background-color: white;

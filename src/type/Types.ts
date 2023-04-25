@@ -18,10 +18,6 @@ export type UserType = {
 	keyData: KeyData
 }
 
-export type UserScore = {
-	score: number
-}
-
 export type UserSessions = {
 	day: string
 	kilogram: number
@@ -78,4 +74,3 @@ export type CardProps = {
 	count: number
 	type: string
 }
-
