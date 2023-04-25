@@ -1,10 +1,10 @@
 /* export{} */
- import {
+import {
 	USER_ACTIVITY,
 	USER_AVERAGE_SESSIONS,
 	USER_MAIN_DATA,
 	USER_PERFORMANCE,
-} from "../__mock__/data"
+} from "../__mock__/data.json"
 import {
 	UserActivity,
 	UserAverage,
