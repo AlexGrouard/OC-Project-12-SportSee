@@ -44,6 +44,7 @@ function Average({ sessions }: AverageProps): JSX.Element {
 						opacity={0.5}
 						axisLine={false}
 						tickLine={false}
+						padding={{ left: 10, right: 10 }}
 					/>
 					<Legend content={renderLegend} verticalAlign='top' width={160} />
 					<Line
