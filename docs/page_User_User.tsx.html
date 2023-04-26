@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> page/User/User.tsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,33 +75,41 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>page/User/User.tsx</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { Link } from "react-router-dom"
+import styles from "./User.module.scss"
+/** Render the landing page for the application
+ * @returns {JSX}
+ */
+function User(): JSX.Element {
+	return (
+		&lt;div className={styles.main}>
+			&lt;h1>Merci de selectionner un Utilisateur:&lt;/h1>
+			&lt;div className={styles.link}>
+				&lt;Link to='/18'>
+					&lt;button>Cecilia&lt;/button>
+				&lt;/Link>
+				&lt;Link to='/12'>
+					&lt;button>Karl&lt;/button>
+				&lt;/Link>
+			&lt;/div>
+		&lt;/div>
+	)
+}
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default User
+</code></pre>
+        </article>
+    </section>
 
 
 

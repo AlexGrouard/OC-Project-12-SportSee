@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> page/404/Error.tsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,33 +75,41 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>page/404/Error.tsx</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useEffect, useState } from "react"
+/** Render a 404 error page
+ * display a waiting message if timeout then display error
+ * @returns {JSX}
+ */
+function Error(): JSX.Element {
+	const duration = 1500
+	const [isTimedOut, setIsTimedOut] = useState(false)
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setIsTimedOut(true)
+		}, duration)
+		return () => {
+			clearTimeout(timer)
+		}
+	}, [])
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+	if (isTimedOut) {
+		return &lt;div>ERREUR 404 : La page demandée n'existe pas&lt;/div>
+	} else return &lt;div>Chargement...&lt;/div>
+}
+export default Error
+</code></pre>
+        </article>
+    </section>
 
 
 

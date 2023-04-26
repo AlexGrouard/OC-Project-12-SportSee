@@ -14,7 +14,7 @@ import { UserSessions } from "../../type/Types"
 import styles from "./Today.module.scss"
 
 type TodayProps = { sessions: UserSessions[] }
-/** Render the Average graphs
+/** Render the main (today) graphs
  * @params  {Object} sessions - Take an Array of object formatted by the formatter
  * @return {JSX}
  */

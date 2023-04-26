@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> components/AvgGraph/Average.tsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,33 +75,83 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>components/AvgGraph/Average.tsx</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {
+	Legend,
+	Line,
+	LineChart,
+	ResponsiveContainer,
+	Tooltip,
+	XAxis,
+} from "recharts"
+import { AverageSessionFormatted } from "../../type/Types"
+import styles from "./Average.module.scss"
 
+type AverageProps = {
+	sessions: AverageSessionFormatted[]
+}
 
-    <h3> </h3>
+/** Render the Average graphs
+ * @params  {Object} sessions - Take an Array of object formatted by the formatter
+ * @return {JSX}
+ */
 
+function Average({ sessions }: AverageProps): JSX.Element {
+	// custom legend and tooltip for the graph
+	const renderLegend = () => {
+		return &lt;div className={styles.title}>Durée moyenne des sessions&lt;/div>
+	}
+	const CustomTooltip = ({ payload }: any) => {
+		if (payload &amp;&amp; payload.length) {
+			return (
+				&lt;div className={styles.tooltip}>
+					&lt;p className={styles.minutes}>{`${payload[0].value} min`}&lt;/p>
+				&lt;/div>
+			)
+		}
+		return null
+	}
 
+	return (
+		&lt;div className={styles.main}>
+			&lt;ResponsiveContainer width='100%' height='100%'>
+				&lt;LineChart data={sessions}>
+					&lt;XAxis
+						dataKey='day'
+						stroke='#FFFFFF'
+						opacity={0.5}
+						axisLine={false}
+						tickLine={false}
+						padding={{ left: 10, right: 10 }}
+					/>
+					&lt;Legend content={renderLegend} verticalAlign='top' width={160} />
+					&lt;Line
+						type='natural'
+						stroke='#FFFFFF'
+						dataKey='sessionLength'
+						opacity={0.5}
+						dot={false}
+					/>
+					&lt;Tooltip content={CustomTooltip} />
+				&lt;/LineChart>
+			&lt;/ResponsiveContainer>
+		&lt;/div>
+	)
+}
 
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default Average
+</code></pre>
+        </article>
+    </section>
 
 
 

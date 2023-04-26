@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> components/Card/Card.tsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,33 +75,65 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>components/Card/Card.tsx</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import caloriesIcon from "../../assets/calories-icon.svg"
+import carbsIcon from "../../assets/carbs-icon.svg"
+import fatIcon from "../../assets/fat-icon.svg"
+import proteinIcon from "../../assets/protein-icon.svg"
+import { CardProps } from "../../type/Types"
+import styles from "./Card.module.scss"
 
+/** Render the card module
+ * @params  {number} count - take the number to display
+ * @params {string} type - take a string to define what style of icon to render
+ * @return {JSX}
+ */
+function Card({ count, type }: CardProps): JSX.Element {
+	// add the right unit to the count
+	let typeVariant
+	let icon
+	const formattedCount = count.toLocaleString()
 
-    <h3> </h3>
+	if (type === "Calories") {
+		icon = &lt;img className={styles.icon} src={caloriesIcon} alt={type}>&lt;/img>
+		typeVariant = &lt;div className={styles.number}>{formattedCount}kCal&lt;/div>
+	} else {
+		typeVariant = &lt;div className={styles.number}>{formattedCount}g&lt;/div>
+	}
+	if (type === "Proteines") {
+		icon = &lt;img className={styles.icon} src={proteinIcon} alt={type}>&lt;/img>
+	}
+	if (type === "Glucides") {
+		icon = &lt;img className={styles.icon} src={carbsIcon} alt={type}>&lt;/img>
+	}
+	if (type === "Lipides") {
+		icon = &lt;img className={styles.icon} src={fatIcon} alt={type}>&lt;/img>
+	}
 
+	return (
+		&lt;div className={styles.main}>
+			{icon}
+			&lt;div className={styles.text}>
+				{typeVariant}
+				&lt;div className={styles.type}>{type}&lt;/div>
+			&lt;/div>
+		&lt;/div>
+	)
+}
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default Card
+</code></pre>
+        </article>
+    </section>
 
 
 

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> page/Home/Home.tsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,33 +75,120 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>page/Home/Home.tsx</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import Average from "../../components/AvgGraph/Average"
+import Card from "../../components/Card/Card"
+import Performance from "../../components/Performance/Performance"
+import Score from "../../components/Score/Score"
+import Title from "../../components/Title/Title"
+import Today from "../../components/Today/Today"
+import {
+	averageFormatter,
+	performanceFormatter,
+	todayFormatter,
+} from "../../formatter/formatter"
+import {
+	AverageSessionFormatted,
+	FormattedPerfData,
+	UserSessions,
+	UserType,
+} from "../../type/Types"
+/* import {
+	getAverage,
+	getPerformance,
+	getTodayActivity,
+	getUserByID,
+} from "../../utils/getApiData" */
+import {
+	getAverage,
+	getPerformance,
+	getTodayActivity,
+	getUserByID,
+} from "../../utils/getMockData"
+import Error from "../404/Error"
+import styles from "./Home.module.scss"
 
+/**Render the dashboard
+ * @return {JSX}
+ */
+function Home(): JSX.Element {
+	const [user, setUser] = useState&lt;UserType>()
+	const [todayActivity, setTodayActivity] = useState&lt;UserSessions[]>()
+	const [average, setAverage] = useState&lt;AverageSessionFormatted[]>()
+	const [performance, setPerformance] = useState&lt;FormattedPerfData[]>()
+	const { id } = useParams()
 
-    <h3> </h3>
+	//API call when react has catch the ID from the adress parameter
+	useEffect(() => {
+		async function loadData() {
+			if (id) {
+				const userLoaded = await getUserByID(id)
+				const todayActivityLoaded = await getTodayActivity(id)
+				const averageLoaded = await getAverage(id)
+				const performanceLoaded = await getPerformance(id)
+				setUser(userLoaded)
+				setTodayActivity(await todayFormatter(todayActivityLoaded))
+				setAverage(await averageFormatter(averageLoaded))
+				setPerformance(await performanceFormatter(performanceLoaded))
+			}
+		}
+		loadData()
+	}, [id])
 
+	//Error message if API call fail
+	if (!user || !todayActivity || !average || !performance) {
+		return &lt;Error />
+	} else {
+		//handle the discrepency between the score and todayScor in the API
+		let userScore
+		if (user.score) {
+			userScore = &lt;Score todayScore={user.score} />
+		} else {
+			userScore = &lt;Score todayScore={user.todayScore} />
+		}
 
+		return (
+			&lt;div className={styles.main}>
+				&lt;section className={styles.section}>
+					&lt;Title
+						userName={user.userInfos.firstName}
+						todayScore={user.todayScore}
+					/>
+					&lt;div className={styles.today}>
+						&lt;Today sessions={todayActivity} />
+					&lt;/div>
+					&lt;div className={styles.graphs}>
+						&lt;Average sessions={average} />
+						&lt;Performance data={performance} />
+						{userScore}
+					&lt;/div>
+				&lt;/section>
+				&lt;aside className={styles.sideCard}>
+					&lt;Card count={user.keyData.calorieCount} type='Calories' />
+					&lt;Card count={user.keyData.proteinCount} type='Proteines' />
+					&lt;Card count={user.keyData.carbohydrateCount} type='Glucides' />
+					&lt;Card count={user.keyData.lipidCount} type='Lipides' />
+				&lt;/aside>
+			&lt;/div>
+		)
+	}
+}
 
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default Home
+</code></pre>
+        </article>
+    </section>
 
 
 

@@ -1,6 +1,6 @@
 import { TitleProps } from "../../type/Types"
 import styles from "./Title.module.scss"
-/** Render the Average graphs
+/** Render the Title component
  * @params  {string} userName - take the user name to display
  * @params {number} todayScore - Use for variyng the message of performance
  * @return {JSX}

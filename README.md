@@ -22,7 +22,7 @@ This project work in conjonction with a back-end API/ or Mockup data.
 
 ### Prerequisites
 
-- [NodeJS](https://nodejs.org/en/)
+- [NodeJS v18.9.0](https://nodejs.org/en/)
 - [npm](https://www.npmjs.com/)
 - [yarn](https://yarnpkg.com/getting-started/install)
 

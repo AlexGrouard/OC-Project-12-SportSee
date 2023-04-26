@@ -9,7 +9,7 @@ import {
 const url = "http://localhost:3000/"
 
 /**
- * fetch global user data form mockup Data
+ * fetch global user data from API Data
  *
  * @param id - user id
  * @returns - return a promise of user data
@@ -26,7 +26,7 @@ export async function getUserByID(id: string): Promise<UserType> {
 }
 
 /**
- * fetch activity data form mockup Data
+ * fetch activity data from API Data
  *
  * @param id - user id
  * @returns - return a promise of id and an array of sessions data for the main graph
@@ -43,7 +43,7 @@ export async function getTodayActivity(id: string): Promise<UserActivity> {
 }
 
 /**
- * fetch Average score form mockup Data
+ * fetch Average score from API Data
  *
  * @param id - user id
  * @returns - return a promise of id and an array of sessions data for the average graph
@@ -60,7 +60,7 @@ export async function getAverage(id: string): Promise<UserAverage> {
 }
 
 /**
- * fetch Performance score form mockup Data
+ * fetch Performance score from API Data
  *
  * @param id - user id
  * @returns - return a promise of id and an array of sessions data for the Performance graph

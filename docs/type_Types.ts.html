@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> type/Types.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,33 +75,112 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>type/Types.ts</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Type List for all my app
+ *
+ */
 
+/** User Info Type
+ *
+ */
+export type UserInfo = {
+	firstName: string
+	lastName: string
+	age: number
+}
+export type KeyData = {
+	calorieCount: number
+	proteinCount: number
+	carbohydrateCount: number
+	lipidCount: number
+}
 
-    <h3> </h3>
+export type UserType = {
+	id: number
+	userInfos: UserInfo
+	todayScore: number
+	score?: number
+	keyData: KeyData
+}
 
+/** Activity Type
+ *
+ */
+export type UserSessions = {
+	day: string
+	kilogram: number
+	calories: number
+}
+export type UserActivity = {
+	userId: number
+	sessions: UserSessions[]
+}
 
+/** Average Type
+ *
+ */
+export type AverageSession = {
+	day: number
+	sessionLength: number
+}
+export type AverageSessionFormatted = {
+	day: string
+	sessionLength: number
+}
+export type UserAverage = {
+	userId: number
+	sessions: AverageSession[] | AverageSessionFormatted[]
+}
 
+/** Performance Type
+ *
+ */
+export type KindList = {
+	1: string
+	2: string
+	3: string
+	4: string
+	5: string
+	6: string
+}
+export type PerfData = {
+	value: number
+	kind: number
+}
+export type FormattedPerfData = {
+	value: number
+	kind: string
+}
+export type UserPerformance = {
+	userId: number
+	kind: KindList
+	data: PerfData[] | FormattedPerfData[]
+}
 
+/** Props Type
+ *
+ */
+export type TitleProps = {
+	userName: string
+	todayScore: number
+}
 
-
-
-
-
-
-    
-
-
-
-
-
+export type CardProps = {
+	count: number
+	type: string
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

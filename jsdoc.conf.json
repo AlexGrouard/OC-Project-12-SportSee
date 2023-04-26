@@ -9,21 +9,16 @@
         
     },
     "plugins": [
-        "node_modules/better-docs/typescript"
-    
+        "plugins/markdown",
+        "node_modules/better-docs/typescript",
+        "node_modules/better-docs/component"
     ],
     "typescript": {
         "moduleRoot": "test"
     },
-     "templates": {
-      "better-docs": {
-          "name": "My React components"
-        }
-    },
     "opts": {
         "template": "node_modules/better-docs",
         "destination": "docs",
-        "recurse": true,
-        "readme": "README.md"
+        "recurse": true
     }
 }

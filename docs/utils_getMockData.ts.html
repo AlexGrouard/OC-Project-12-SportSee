@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> utils/getMockData.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,33 +75,111 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>utils/getMockData.ts</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* export{} */
+import {
+	USER_ACTIVITY,
+	USER_AVERAGE_SESSIONS,
+	USER_MAIN_DATA,
+	USER_PERFORMANCE,
+} from "../__mock__/data"
+import {
+	UserActivity,
+	UserAverage,
+	UserPerformance,
+	UserType,
+} from "../type/Types"
 
+/**
+ * fetch global user data from mockup Data
+ *
+ * @param id - user id
+ * @returns - return a promise of user data
+ */
+export async function getUserByID(id: string): Promise&lt;UserType> {
+	try {
+		const data = USER_MAIN_DATA.find((user) => user.id === parseInt(id))
+		if (data === undefined) {
+			throw new Error("User not found")
+		} else {
+			return data
+		}
+	} catch (e) {
+		throw new Error(`${e}`)
+	}
+}
 
-    <h3> </h3>
+/**
+ * fetch activity data from mockup Data
+ *
+ * @param id - user id
+ * @returns - return a promise of id and an array of sessions data for the main graph
+ */
 
+export async function getTodayActivity(id: string): Promise&lt;UserActivity> {
+	try {
+		const data = USER_ACTIVITY.find((user) => user.userId === parseInt(id))
+		if (data === undefined) {
+			throw new Error("User not found")
+		} else {
+			return data
+		}
+	} catch (e) {
+		throw new Error(`${e}`)
+	}
+}
 
+/**
+ * fetch Average score from mockup Data
+ *
+ * @param id - user id
+ * @returns - return a promise of id and an array of sessions data for the average graph
+ */
+export async function getAverage(id: string): Promise&lt;UserAverage> {
+	try {
+		const data = USER_AVERAGE_SESSIONS.find(
+			(user) => user.userId === parseInt(id)
+		)
+		if (data === undefined) {
+			throw new Error("User not found")
+		} else {
+			return data
+		}
+	} catch (e) {
+		throw new Error(`${e}`)
+	}
+}
 
-
-
-
-
-
-
-
-    
-
-
-
-
-
+/**
+ * fetch Performance score from mockup Data
+ *
+ * @param id - user id
+ * @returns - return a promise of id and an array of sessions data for the Performance graph
+ */
+export async function getPerformance(id: string): Promise&lt;UserPerformance> {
+	try {
+		const data = USER_PERFORMANCE.find((user) => user.userId === parseInt(id))
+		if (data === undefined) {
+			throw new Error("User not found")
+		} else {
+			return data
+		}
+	} catch (e) {
+		throw new Error(`${e}`)
+	}
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

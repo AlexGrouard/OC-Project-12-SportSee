@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> utils/getApiData.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,33 +75,96 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>utils/getApiData.ts</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import axios from "axios"
+import {
+	UserActivity,
+	UserAverage,
+	UserPerformance,
+	UserType,
+} from "../type/Types"
 
+const url = "http://localhost:3000/"
 
-    <h3> </h3>
+/**
+ * fetch global user data from API Data
+ *
+ * @param id - user id
+ * @returns - return a promise of user data
+ */
+export async function getUserByID(id: string): Promise&lt;UserType> {
+	try {
+		const {
+			data: { data },
+		} = await axios.get(`${url}user/${id}`)
+		return data
+	} catch (e) {
+		throw new Error(`${e}`)
+	}
+}
 
+/**
+ * fetch activity data from API Data
+ *
+ * @param id - user id
+ * @returns - return a promise of id and an array of sessions data for the main graph
+ */
+export async function getTodayActivity(id: string): Promise&lt;UserActivity> {
+	try {
+		const {
+			data: { data },
+		} = await axios.get(`${url}user/${id}/activity`)
+		return data
+	} catch (e) {
+		throw new Error(`${e}`)
+	}
+}
 
+/**
+ * fetch Average score from API Data
+ *
+ * @param id - user id
+ * @returns - return a promise of id and an array of sessions data for the average graph
+ */
+export async function getAverage(id: string): Promise&lt;UserAverage> {
+	try {
+		const {
+			data: { data },
+		} = await axios.get(`${url}user/${id}/average-sessions`)
+		return data
+	} catch (e) {
+		throw new Error(`${e}`)
+	}
+}
 
-
-
-
-
-
-
-
-    
-
-
-
-
-
+/**
+ * fetch Performance score from API Data
+ *
+ * @param id - user id
+ * @returns - return a promise of id and an array of sessions data for the Performance graph
+ */
+export async function getPerformance(id: string): Promise&lt;UserPerformance> {
+	try {
+		const {
+			data: { data },
+		} = await axios.get(`${url}user/${id}/performance`)
+		return data
+	} catch (e) {
+		throw new Error(`${e}`)
+	}
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> components/Score/Score.tsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,33 +75,91 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>components/Score/Score.tsx</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from "recharts"
+import styles from "./Score.module.scss"
 
+type ScoreProps = {
+	todayScore: number
+}
+/** Render the Score graphs
+ * @params  {Object} todayScore - User TodayScore or score form the main user data
+ * @return {JSX}
+ */
+function Score({ todayScore }: ScoreProps): JSX.Element {
+	//formatting
+	const scoreInPercent = todayScore * 100
+	const data = [
+		{
+			todayScore: scoreInPercent,
+		},
+		{
+			todayScore: 100 - scoreInPercent,
+		},
+	]
+	const renderLegend = () => {
+		return &lt;div className={styles.title}>Score&lt;/div>
+	}
+	//text
+	const insideText = (
+		&lt;div className={styles.insideText}>
+			&lt;div className={styles.percent}>{scoreInPercent}%&lt;/div>
+			&lt;div>de votre &lt;/div>
+			&lt;div>objectif&lt;/div>
+		&lt;/div>
+	)
+	const COLORS = ["#FF0101", "#FBFBFB"]
 
-    <h3> </h3>
+	return (
+		&lt;div className={styles.main}>
+			&lt;ResponsiveContainer width='100%' height='100%'>
+				&lt;PieChart>
+					&lt;Pie
+						cx={30}
+						cy={120}
+						data={data}
+						innerRadius={70}
+						outerRadius={80}
+						startAngle={90}
+						paddingAngle={5}
+						stroke='none'
+						dataKey='todayScore'
+					>
+						{data.map((entry, index) => (
+							&lt;Cell
+								key={`cell-${index}`}
+								fill={COLORS[index % COLORS.length]}
+							/>
+						))}
+					&lt;/Pie>
+					&lt;Legend
+						iconSize={0}
+						layout='vertical'
+						verticalAlign='top'
+						align='left'
+						fill='#20253A'
+						content={renderLegend}
+					/>
+				&lt;/PieChart>
+			&lt;/ResponsiveContainer>
+			{insideText}
+		&lt;/div>
+	)
+}
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default Score
+</code></pre>
+        </article>
+    </section>
 
 
 

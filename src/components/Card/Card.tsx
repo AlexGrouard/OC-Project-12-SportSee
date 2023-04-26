@@ -5,7 +5,7 @@ import proteinIcon from "../../assets/protein-icon.svg"
 import { CardProps } from "../../type/Types"
 import styles from "./Card.module.scss"
 
-/** Render the Average graphs
+/** Render the card module
  * @params  {number} count - take the number to display
  * @params {string} type - take a string to define what style of icon to render
  * @return {JSX}

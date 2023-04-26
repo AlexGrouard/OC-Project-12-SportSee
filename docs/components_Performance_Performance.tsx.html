@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> components/Performance/Performance.tsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,33 +75,53 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>components/Performance/Performance.tsx</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {
+	PolarAngleAxis,
+	PolarGrid,
+	Radar,
+	RadarChart,
+	ResponsiveContainer,
+} from "recharts"
+import { FormattedPerfData } from "../../type/Types"
+import styles from "./Performance.module.scss"
+type PerfProps = {
+	data: FormattedPerfData[]
+}
+/** Render the Performance graphs
+ * @params  {Object} data - Take an Array of object formatted by the formatter
+ * @return {JSX}
+ */
+function Performance({ data }: PerfProps): JSX.Element {
+	return (
+		&lt;div className={styles.main}>
+			&lt;ResponsiveContainer width='100%' height='100%'>
+				&lt;RadarChart data={data} outerRadius={85}>
+					&lt;PolarGrid gridType='polygon' radialLines={false} />
+					&lt;PolarAngleAxis
+						dataKey='kind'
+						tick={{ fontSize: 9, fill: "white" }}
+					/>
+					&lt;Radar dataKey='value' fill='#FF0101' fillOpacity={0.6} />
+				&lt;/RadarChart>
+			&lt;/ResponsiveContainer>
+		&lt;/div>
+	)
+}
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default Performance
+</code></pre>
+        </article>
+    </section>
 
 
 
