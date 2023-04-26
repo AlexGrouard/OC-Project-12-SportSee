@@ -17,18 +17,18 @@ import {
 	UserSessions,
 	UserType,
 } from "../../type/Types"
-/* import {
-	getAverage,
-	getPerformance,
-	getTodayActivity,
-	getUserByID,
-} from "../../utils/getApiData" */
 import {
 	getAverage,
 	getPerformance,
 	getTodayActivity,
 	getUserByID,
-} from "../../utils/getMockData"
+} from "../../utils/getApiData"
+/* import {
+	getAverage,
+	getPerformance,
+	getTodayActivity,
+	getUserByID,
+} from "../../utils/getMockData" */
 import Error from "../404/Error"
 import styles from "./Home.module.scss"
 
