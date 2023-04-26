@@ -1,6 +1,6 @@
 import {
-	AverageSession,
-	PerfData,
+	AverageSessionFormatted,
+	FormattedPerfData,
 	UserActivity,
 	UserAverage,
 	UserPerformance,
@@ -14,7 +14,7 @@ import {
  * @return {Promise} - formatted data array for today graph
  */
 export async function todayFormatter({
-	id,
+	userId,
 	sessions,
 }: UserActivity): Promise<UserSessions[] | undefined> {
 	try {
@@ -50,15 +50,15 @@ export async function todayFormatter({
  * @return {Promise} - formatted data array for average graph
  */
 export async function averageFormatter({
-	id,
+	userId,
 	sessions,
-}: UserAverage): Promise<AverageSession[] | undefined> {
+}: UserAverage): Promise<AverageSessionFormatted[] | undefined> {
 	try {
-		let averageFormatted: AverageSession[] = []
+		let averageFormatted: AverageSessionFormatted[] = []
 		sessions.forEach((session) => {
 			switch (session.day) {
 				case 1:
-					const Lformatted: AverageSession = {
+					const Lformatted: AverageSessionFormatted = {
 						day: "L",
 						sessionLength: session.sessionLength,
 					}
@@ -66,35 +66,35 @@ export async function averageFormatter({
 					break
 				case 2:
 				case 3:
-					const Mformatted: AverageSession = {
+					const Mformatted: AverageSessionFormatted = {
 						day: "M",
 						sessionLength: session.sessionLength,
 					}
 					averageFormatted.push(Mformatted)
 					break
 				case 4:
-					const Jformatted: AverageSession = {
+					const Jformatted: AverageSessionFormatted = {
 						day: "J",
 						sessionLength: session.sessionLength,
 					}
 					averageFormatted.push(Jformatted)
 					break
 				case 5:
-					const Vformatted: AverageSession = {
+					const Vformatted: AverageSessionFormatted = {
 						day: "V",
 						sessionLength: session.sessionLength,
 					}
 					averageFormatted.push(Vformatted)
 					break
 				case 6:
-					const Sformatted: AverageSession = {
+					const Sformatted: AverageSessionFormatted = {
 						day: "S",
 						sessionLength: session.sessionLength,
 					}
 					averageFormatted.push(Sformatted)
 					break
 				case 7:
-					const Dformatted: AverageSession = {
+					const Dformatted: AverageSessionFormatted = {
 						day: "D",
 						sessionLength: session.sessionLength,
 					}
@@ -118,51 +118,51 @@ export async function averageFormatter({
  * @return {Promise} - formatted data array for Performance graph
  */
 export async function performanceFormatter({
-	id,
+	userId,
 	kind,
 	data,
-}: UserPerformance): Promise<PerfData[] | undefined> {
+}: UserPerformance): Promise<FormattedPerfData[] | undefined> {
 	try {
-		let dataFormatted: PerfData[] = []
+		let dataFormatted: FormattedPerfData[] = []
 		data.forEach((el) => {
 			switch (el.kind) {
 				case 1:
-					const cardio: PerfData = {
+					const cardio: FormattedPerfData = {
 						value: el.value,
 						kind: "Cardio",
 					}
 					dataFormatted.push(cardio)
 					break
 				case 2:
-					const energy: PerfData = {
+					const energy: FormattedPerfData = {
 						value: el.value,
 						kind: "Energie",
 					}
 					dataFormatted.push(energy)
 					break
 				case 3:
-					const endurance: PerfData = {
+					const endurance: FormattedPerfData = {
 						value: el.value,
 						kind: "Endurance",
 					}
 					dataFormatted.push(endurance)
 					break
 				case 4:
-					const strength: PerfData = {
+					const strength: FormattedPerfData = {
 						value: el.value,
 						kind: "Force",
 					}
 					dataFormatted.push(strength)
 					break
 				case 5:
-					const speed: PerfData = {
+					const speed: FormattedPerfData = {
 						value: el.value,
 						kind: "Vitesse",
 					}
 					dataFormatted.push(speed)
 					break
 				case 6:
-					const intensity: PerfData = {
+					const intensity: FormattedPerfData = {
 						value: el.value,
 						kind: "Intensité",
 					}

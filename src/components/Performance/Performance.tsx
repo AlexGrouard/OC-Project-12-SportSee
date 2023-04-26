@@ -5,10 +5,10 @@ import {
 	RadarChart,
 	ResponsiveContainer,
 } from "recharts"
-import { PerfData } from "../../type/Types"
+import { FormattedPerfData } from "../../type/Types"
 import styles from "./Performance.module.scss"
 type PerfProps = {
-	data: PerfData[]
+	data: FormattedPerfData[]
 }
 /** Render the Performance graphs
  * @params  {Object} data - Take an Array of object formatted by the formatter

@@ -6,11 +6,11 @@ import {
 	Tooltip,
 	XAxis,
 } from "recharts"
-import { AverageSession } from "../../type/Types"
+import { AverageSessionFormatted } from "../../type/Types"
 import styles from "./Average.module.scss"
 
 type AverageProps = {
-	sessions: AverageSession[]
+	sessions: AverageSessionFormatted[]
 }
 
 /** Render the Average graphs

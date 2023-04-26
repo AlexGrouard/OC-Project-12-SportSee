@@ -12,24 +12,24 @@ import {
 	todayFormatter,
 } from "../../formatter/formatter"
 import {
-	AverageSession,
-	PerfData,
+	AverageSessionFormatted,
+	FormattedPerfData,
 	UserSessions,
 	UserType,
 } from "../../type/Types"
+import {
+	getAverage,
+	getPerformance,
+	getTodayActivity,
+	getUserByID,
+} from "../../utils/getApiData"
 import Error from "../404/Error"
 /* import {
 	getAverage,
 	getPerformance,
 	getTodayActivity,
 	getUserByID,
-} from "../../utils/getApiData" */
-import {
-	getAverage,
-	getPerformance,
-	getTodayActivity,
-	getUserByID,
-} from "../../utils/getMockData"
+} from "../../utils/getMockData" */
 
 import styles from "./Home.module.scss"
 
@@ -39,8 +39,8 @@ import styles from "./Home.module.scss"
 function Home(): JSX.Element {
 	const [user, setUser] = useState<UserType>()
 	const [todayActivity, setTodayActivity] = useState<UserSessions[]>()
-	const [average, setAverage] = useState<AverageSession[]>()
-	const [performance, setPerformance] = useState<PerfData[]>()
+	const [average, setAverage] = useState<AverageSessionFormatted[]>()
+	const [performance, setPerformance] = useState<FormattedPerfData[]>()
 	const { id } = useParams()
 
 	//API call when react has catch the ID from the adress parameter
@@ -66,7 +66,7 @@ function Home(): JSX.Element {
 	} else {
 		//handle the discrepency between the score and todayScor in the API
 		let userScore
-		if (!user.todayScore) {
+		if (user.score) {
 			userScore = <Score todayScore={user.score} />
 		} else {
 			userScore = <Score todayScore={user.todayScore} />

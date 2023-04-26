@@ -2,9 +2,12 @@
  *
  */
 
+/** User Info Type
+ *
+ */
 export type UserInfo = {
 	firstName: string
-	lastNumber: string
+	lastName: string
 	age: number
 }
 export type KeyData = {
@@ -18,57 +21,67 @@ export type UserType = {
 	id: number
 	userInfos: UserInfo
 	todayScore: number
-	score: number
+	score?: number
 	keyData: KeyData
 }
 
+/** Activity Type
+ *
+ */
 export type UserSessions = {
 	day: string
 	kilogram: number
 	calories: number
 }
-
 export type UserActivity = {
-	id: number
-	sessions: [
-		{
-			day: string
-			kilogram: number
-			calories: number
-		}
-	]
-}
-export type UserAverage = {
-	id: number
-	sessions: [
-		{
-			day: number
-			sessionLength: number
-		}
-	]
+	userId: number
+	sessions: UserSessions[]
 }
 
+/** Average Type
+ *
+ */
 export type AverageSession = {
+	day: number
+	sessionLength: number
+}
+export type AverageSessionFormatted = {
 	day: string
 	sessionLength: number
 }
-
-export type UserPerformance = {
-	id: number
-	kind: { 1: string; 2: string; 3: string; 4: string; 5: string; 6: string }
-	data: [
-		{
-			value: number
-			kind: number
-		}
-	]
+export type UserAverage = {
+	userId: number
+	sessions: AverageSession[] | AverageSessionFormatted[]
 }
 
+/** Performance Type
+ *
+ */
+export type KindList = {
+	1: string
+	2: string
+	3: string
+	4: string
+	5: string
+	6: string
+}
 export type PerfData = {
+	value: number
+	kind: number
+}
+export type FormattedPerfData = {
 	value: number
 	kind: string
 }
+export type UserPerformance = {
+	userId: number
+	kind: KindList
+	data: PerfData[] | FormattedPerfData[]
+}
 
+/** Props Type
+ *
+ */
 export type TitleProps = {
 	userName: string
 	todayScore: number

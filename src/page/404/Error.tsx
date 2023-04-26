@@ -1,4 +1,5 @@
 /** Render a 404 error page
+ * display a waiting message if timeout then display error
  * @returns {JSX}
  */
 function Error(): JSX.Element {

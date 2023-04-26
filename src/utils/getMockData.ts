@@ -4,13 +4,14 @@ import {
 	USER_AVERAGE_SESSIONS,
 	USER_MAIN_DATA,
 	USER_PERFORMANCE,
-} from "../__mock__/data.json"
+} from "../__mock__/data"
 import {
 	UserActivity,
 	UserAverage,
 	UserPerformance,
 	UserType,
 } from "../type/Types"
+
 /**
  * fetch global user data form mockup Data
  *
@@ -20,7 +21,11 @@ import {
 export async function getUserByID(id: string): Promise<UserType> {
 	try {
 		const data = USER_MAIN_DATA.find((user) => user.id === parseInt(id))
-		return data
+		if (data === undefined) {
+			throw new Error("User not found")
+		} else {
+			return data
+		}
 	} catch (e) {
 		throw new Error(`${e}`)
 	}
@@ -36,7 +41,11 @@ export async function getUserByID(id: string): Promise<UserType> {
 export async function getTodayActivity(id: string): Promise<UserActivity> {
 	try {
 		const data = USER_ACTIVITY.find((user) => user.userId === parseInt(id))
-		return data
+		if (data === undefined) {
+			throw new Error("User not found")
+		} else {
+			return data
+		}
 	} catch (e) {
 		throw new Error(`${e}`)
 	}
@@ -53,7 +62,11 @@ export async function getAverage(id: string): Promise<UserAverage> {
 		const data = USER_AVERAGE_SESSIONS.find(
 			(user) => user.userId === parseInt(id)
 		)
-		return data
+		if (data === undefined) {
+			throw new Error("User not found")
+		} else {
+			return data
+		}
 	} catch (e) {
 		throw new Error(`${e}`)
 	}
@@ -68,7 +81,11 @@ export async function getAverage(id: string): Promise<UserAverage> {
 export async function getPerformance(id: string): Promise<UserPerformance> {
 	try {
 		const data = USER_PERFORMANCE.find((user) => user.userId === parseInt(id))
-		return data
+		if (data === undefined) {
+			throw new Error("User not found")
+		} else {
+			return data
+		}
 	} catch (e) {
 		throw new Error(`${e}`)
 	}
