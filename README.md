@@ -1,10 +1,10 @@
-# Project SportSee
+# SportSee
 
-Project n°12 of OpenClassrooms Front-end Developper curriculum.
+A dashboard for athletes who like to track their performance.
 
 ## Introduction
 
-This project work in conjonction with a back-end API/ or Mockup data.
+This project work in conjonction with a back-end API or Mockup data.
 
 ### Technologies
 
